@@ -10,9 +10,15 @@ kubectl apply -f pod-with-pvc.yaml
 in minikube machine: echo “hello from the other side” > /data/pv0001/index.html
 
 https://storage.googleapis.com/kubernetes-helm/helm-v2.14.0-windows-amd64.zip
-curl -L https://git.io/get_helm.sh | bash
-helm init  # setup helm with our cluster
-helm repo update # sync all helm charts info
-helm repo list
+helm init
+helm repo update
 helm list
-
+helm install --name redis stable/redis
+helm delete --purge redis
+helm install --name grafana stable/grafana\n
+helm upgrade  --name grafana stable/grafana --set persistence.enabled=true
+helm upgrade  grafana stable/grafana --set persistence.enabled=true
+helm upgrade  grafana stable/grafana --set persistence.enabled=true --set replicas=3
+helm install --name grafana stable/grafana -f values-dev.yaml
+helm delete --purge grafana
+helm install --name grafana stable/grafana -f values-prod.yaml
