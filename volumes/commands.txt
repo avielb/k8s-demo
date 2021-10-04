@@ -14,6 +14,7 @@ helm init
 helm repo update
 helm list
 helm install --name redis stable/redis
+
 helm delete --purge redis
 helm install --name grafana stable/grafana\n
 helm upgrade  --name grafana stable/grafana --set persistence.enabled=true
@@ -22,3 +23,7 @@ helm upgrade  grafana stable/grafana --set persistence.enabled=true --set replic
 helm install --name grafana stable/grafana -f values-dev.yaml
 helm delete --purge grafana
 helm install --name grafana stable/grafana -f values-prod.yaml
+
+
+
+helm repo add bitnami https://charts.bitnami.com/bitnami
