@@ -5,4 +5,5 @@
 5. helm install redis-prod stable/redis --set password="secretpass"
 6. kubectl get all
 7. helm upgrade redis-prod stable/redis --set cluster.slaveCount=5 --set password="secretpass"
+   helm upgrade redis-prod stable/redis -f values.yaml
 8. helm delete redis-prod
