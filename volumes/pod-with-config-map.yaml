@@ -11,8 +11,7 @@ spec:
             name: example-configmap
       volumeMounts:
         - name: config-volume
-          mountPath: /app/game.properties
-          subPath: game.properties
+          mountPath: /app/
   volumes:
     - name: config-volume
       configMap:
