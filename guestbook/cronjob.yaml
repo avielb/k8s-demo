@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: hello-world-cron
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: hello-world
+            image: alpine
+            command: ["echo", "Hello, World!"]
+          restartPolicy: OnFailure
